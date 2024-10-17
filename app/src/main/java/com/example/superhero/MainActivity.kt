@@ -99,6 +99,14 @@ fun HeroDes(
                     text = stringResource(hero.description),
                     style = MaterialTheme.typography.bodyLarge
                 )
+                Text(
+                    text = stringResource(hero.vuln),
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = stringResource(hero.vulndetail),
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
             }
         }
@@ -121,8 +129,7 @@ fun SuperheroTopAppBar(modifier: Modifier = Modifier) {
                     style = MaterialTheme.typography.displayLarge
                 )
             }
-        },
-        modifier = modifier
+        }
     )
 }
 
