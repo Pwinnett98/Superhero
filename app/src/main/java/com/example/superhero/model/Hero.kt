@@ -7,6 +7,8 @@ data class Hero(
     @DrawableRes val imageResourceId: Int,
     @StringRes val name: Int,
     @StringRes val description: Int,
+)
+data class heroVuln (
     @StringRes val vuln: Int,
     @StringRes val vulndetail: Int
 )

@@ -9,28 +9,38 @@ import androidx.compose.ui.unit.sp
 import com.example.superhero.R
 
 val cabin = FontFamily(
-    Font(R.font.cabin_regular),
+    Font(R.font.cabin_regular, FontWeight.Normal),
     Font(R.font.cabin_bold, FontWeight.Bold)
 )
 val Typography = Typography(
+    bodyMedium = TextStyle (
+        fontFamily = cabin,
+        fontWeight = FontWeight.Normal
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = cabin,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = cabin,
+        fontWeight = FontWeight.Bold
+    ),
     displayLarge = TextStyle(
         fontFamily = cabin,
         fontWeight = FontWeight.Normal,
-        fontSize = 36.sp
+        fontSize = 30.sp
     ),
     displayMedium = TextStyle(
         fontFamily = cabin,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
     ),
-    labelSmall = TextStyle(
+    displaySmall = TextStyle(
         fontFamily = cabin,
         fontWeight = FontWeight.Bold,
-        fontSize = 14.sp
-    ),
-    bodyLarge = TextStyle(
-        fontFamily = cabin,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 20.sp
     )
 )
