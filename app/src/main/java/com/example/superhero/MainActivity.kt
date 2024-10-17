@@ -1,4 +1,4 @@
-package com.example.Superhero
+package com.example.superhero
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -63,7 +62,7 @@ fun HeroDes(
     hero: Hero,
     modifier: Modifier = Modifier
 ) {
-    Card() {
+    Card {
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -79,7 +78,7 @@ fun HeroDes(
                 contentDescription = null
             )
 
-            Column() {
+            Column {
                 Text(
                     text = stringResource(hero.name),
                     style = MaterialTheme.typography.displayMedium,
@@ -93,7 +92,6 @@ fun HeroDes(
             }
         }
     }
-}
 
 @Preview
 @Composable
