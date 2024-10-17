@@ -118,8 +118,8 @@ fun HeroDes(
             modifier = Modifier
                 .animateContentSize(
                     animationSpec = spring(
-                        dampingRatio = spring().DampingRatioNoBouncy,
-                        stiffness = spring().StiffnessMedium
+                        dampingRatio = Spring().DampingRatioNoBouncy,
+                        stiffness = Spring().StiffnessMedium
                     )
                 )
                 .background(color = color)
