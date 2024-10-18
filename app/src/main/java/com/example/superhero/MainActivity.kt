@@ -165,7 +165,6 @@ fun HeroItem(
                 )
             }
             if (expanded) {
-
                 Text(
                     text = stringResource(hero.vuln),
                     style = MaterialTheme.typography.displaySmall,
