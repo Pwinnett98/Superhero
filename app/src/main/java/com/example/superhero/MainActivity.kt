@@ -154,7 +154,7 @@ fun HeroItem(
                     )
                     Text(
                         text = stringResource(hero.des),
-                        style = MaterialTheme.typography.displaySmall,
+                        style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.padding(top = 8.dp)
                     )
                 }
@@ -168,12 +168,12 @@ fun HeroItem(
 
                 Text(
                     text = stringResource(hero.vuln),
-                    style = MaterialTheme.typography.displayMedium,
+                    style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.padding(top = 8.dp)
                 )
                 Text(
                     text = stringResource(hero.vulnDetail),
-                    style = MaterialTheme.typography.displayMedium,
+                    style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
