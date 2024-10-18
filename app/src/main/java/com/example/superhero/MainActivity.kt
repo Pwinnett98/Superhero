@@ -10,6 +10,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -119,7 +120,7 @@ fun HeroItem(
         else MaterialTheme.colorScheme.primaryContainer
     )
 
-    Card(modifier = modifier) {
+    Card(modifier = modifier.clickable { expanded = !expanded }) {
         Column(
             modifier = Modifier
                 .animateContentSize(
@@ -164,14 +165,16 @@ fun HeroItem(
                 )
             }
             if (expanded) {
-                HeroVuln(
-                    hero.vuln,
-                    modifier = Modifier.padding(
-                        start = 16.dp,
-                        top = 8.dp,
-                        end = 16.dp,
-                        bottom = 16.dp
-                    )
+
+                Text(
+                    text = stringResource(hero.vuln),
+                    style = MaterialTheme.typography.displayMedium,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+                Text(
+                    text = stringResource(hero.vulnDetail),
+                    style = MaterialTheme.typography.displayMedium,
+                    modifier = Modifier.padding(top = 8.dp)
                 )
             }
         }
@@ -196,26 +199,6 @@ private fun HeroItemButton(
     }
 }
 
-@Composable
-fun HeroVuln(
-    @StringRes heroVuln: Int,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(Hero.vuln),
-            style = MaterialTheme.typography.displayMedium,
-            modifier = Modifier.padding(top = 8.dp)
-        )
-        Text(
-            text = stringResource(Hero.vulnDetail),
-            style = MaterialTheme.typography.displayMedium,
-            modifier = Modifier.padding(top = 8.dp)
-        )
-    }
-}
 
 @Preview
 @Composable
