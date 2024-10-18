@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,6 +20,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +44,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.superhero.data.DataSource.hero
+import com.example.superhero.data.DataSource
 import com.example.superhero.model.Hero
 import com.example.superhero.ui.theme.SuperheroTheme
 
@@ -61,6 +64,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SuperheroTopAppBar(modifier: Modifier = Modifier) {
@@ -84,16 +88,17 @@ fun SuperheroTopAppBar(modifier: Modifier = Modifier) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SuperheroApp() {
-    Scaffold(
+    Scaffold (
         topBar = {
             SuperheroTopAppBar()
         }
-    ) { it ->
+    ) {it ->
         LazyColumn(contentPadding = it) {
-            items(hero) {
-                HeroDes(
+            items(DataSource.Hero) {
+                HeroItem(
                     hero = it,
                     modifier = Modifier.padding(8.dp)
                 )
@@ -102,8 +107,9 @@ fun SuperheroApp() {
     }
 }
 
+
 @Composable
-fun HeroDes(
+fun HeroItem(
     hero: Hero,
     modifier: Modifier = Modifier
 ) {
@@ -118,8 +124,8 @@ fun HeroDes(
             modifier = Modifier
                 .animateContentSize(
                     animationSpec = spring(
-                        dampingRatio = Spring().DampingRatioNoBouncy,
-                        stiffness = Spring().StiffnessMedium
+                        dampingRatio = Spring.DampingRatioNoBouncy,
+                        stiffness = Spring.StiffnessMedium
                     )
                 )
                 .background(color = color)
@@ -146,19 +152,20 @@ fun HeroDes(
                         modifier = Modifier.padding(top = 8.dp)
                     )
                     Text(
-                        text = stringResource(R.string.description),
-                        style = MaterialTheme.typography.bodyLarge
+                        text = stringResource(hero.des),
+                        style = MaterialTheme.typography.displaySmall,
+                        modifier = Modifier.padding(top = 8.dp)
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
-                HeroDesButton(
+                HeroItemButton(
                     expanded = expanded,
                     onClick = { expanded = !expanded }
                 )
             }
             if (expanded) {
                 HeroVuln(
-                    hero.heroVuln,
+                    hero.vuln,
                     modifier = Modifier.padding(
                         start = 16.dp,
                         top = 8.dp,
@@ -172,7 +179,7 @@ fun HeroDes(
 }
 
 @Composable
-private fun HeroDesButton(
+private fun HeroItemButton(
     expanded: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -198,15 +205,18 @@ fun HeroVuln(
         modifier = modifier
     ) {
         Text(
-            text = stringResource(R.string.vuln),
-            style = MaterialTheme.typography.labelSmall
+            text = stringResource(Hero.vuln),
+            style = MaterialTheme.typography.displayMedium,
+            modifier = Modifier.padding(top = 8.dp)
         )
         Text(
-            text = stringResource(heroVuln),
-            style = MaterialTheme.typography.bodyLarge
+            text = stringResource(Hero.vulnDetail),
+            style = MaterialTheme.typography.displayMedium,
+            modifier = Modifier.padding(top = 8.dp)
         )
     }
 }
+
 @Preview
 @Composable
 fun SuperheroPreview() {
@@ -214,6 +224,7 @@ fun SuperheroPreview() {
         SuperheroApp()
     }
 }
+
 @Preview
 @Composable
 fun SuperheroDarkThemePreview() {

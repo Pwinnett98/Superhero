@@ -4,7 +4,7 @@ import com.example.superhero.model.Hero
 import com.example.superhero.R
 
 object DataSource {
-    val hero = listOf(
+    val Hero = listOf(
         Hero(R.drawable.android_superhero1, R.string.hero1, R.string.description1, R.string.vuln1, R.string.vulndetail1),
         Hero(R.drawable.android_superhero2, R.string.hero2, R.string.description2, R.string.vuln2, R.string.vulndetail2),
         Hero(R.drawable.android_superhero3, R.string.hero3, R.string.description3, R.string.vuln3, R.string.vulndetail3),
